@@ -4,7 +4,7 @@ import logging
 from asyncio import iscoroutine, ensure_future, Future, wait_for
 from typing import Any
 
-from src.Const import TIMEOUT_S
+TIMEOUT_S = 5
 
 _eventCallbacks = {}
 _allEventCallback = []
@@ -143,7 +143,6 @@ class EventEmitter(object):
                     _eventCallbacks.pop(eventName)
         else:
             logging.debug('no cb for event: {}'.format(eventName))
-            # self._log.info('no cb for event: {} {}'.format(event.get(METHOD),event))
             #################################### Emit ###################################
 
     async def _waitForResponse(self, future: Future):
